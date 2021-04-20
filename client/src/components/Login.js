@@ -43,7 +43,7 @@ const Login = () => {
                         <form method="POST">
                             <div className="form-group">
                                 <input type="text" className="form-control mb-4" placeholder="User Name" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                                <input type="text" className="form-control mb-4" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                                <input type="password" className="form-control mb-4" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
                                 <div className="row">
                                     <div className="col-md-6 mr-auto">
                                         <input type="checkbox" name="remember" value="remember"/>

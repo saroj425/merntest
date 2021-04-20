@@ -1,7 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import Navbar from './Navbar';
 
 const Dashboard = () => {
+    const history = useHistory();
+    const callDashboard= async()=>{
+        try{
+
+        }catch(e){
+            
+        }
+    }
     return (
         <>
             <div className="row">

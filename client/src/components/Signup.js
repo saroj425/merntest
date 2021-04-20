@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import Image from '../images/images.jpg';
 import Navbar from './Navbar'
 
@@ -9,7 +10,7 @@ const Signup = () => {
         name:"", email:"",mobile:"",password:"",cpassword:"" });
     let name,value;
     const handleInputs = (e)=>{
-        console.log(e)
+        //console.log(e)
         name = e.target.name;
         value = e.target.value;
         setUser({...user,[name]:value})
@@ -17,18 +18,29 @@ const Signup = () => {
     const register = async (e)=>{
         e.preventDefault();
         const {name, email,mobile,password,cpassword} = user;
-        const res = await fetch("/signup",{
-            method : 'POST',
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body:JSON.stringify({
-                name, email,mobile,password,cpassword
-            })
+        // const res = await fetch("http://localhost:4000/signup",{
+        //     // const res = await fetch("http://localhost:4000/signup",{
+        //     method : 'POST',
+        //     headers : {
+        //         "Content-Type" : "application/json",
+                
+        //     },
+        //     body:JSON.stringify({
+        //         name, email,mobile,password,cpassword
+        //     })
 
-        });
+        // });
+        const res = axios.post('http://localhost:4000/user', {
+            name, email,mobile,password,cpassword
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         const data = await res.json();
-        if(data.status ===422 || !data){
+        if(data.status === 422 || !data){
             window.alert("Not saved");
         }else{
             window.alert("Saved Successfully");
